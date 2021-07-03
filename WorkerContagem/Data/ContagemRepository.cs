@@ -24,7 +24,7 @@ namespace WorkerContagem.Data
                 _configuration.GetConnectionString("BaseContagem"));
             conexao.Insert<HistoricoContagem>(new ()
             {
-                DataProcessamento = DateTime.Now, //TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _timeZoneBrasil),
+                DataProcessamento = DateTime.UtcNow,//DateTime.Now, //TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _timeZoneBrasil),
                 ValorAtual = resultado.ValorAtual,
                 Producer = resultado.Producer,
                 Consumer = Environment.MachineName,
