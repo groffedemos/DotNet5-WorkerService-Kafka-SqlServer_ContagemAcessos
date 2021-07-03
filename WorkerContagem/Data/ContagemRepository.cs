@@ -9,13 +9,13 @@ namespace WorkerContagem.Data
     public class ContagemRepository
     {
         private readonly IConfiguration _configuration;
-        private readonly TimeZoneInfo _timeZoneBrasil;
+        //private readonly TimeZoneInfo _timeZoneBrasil;
 
         public ContagemRepository(IConfiguration configuration)
         {
             _configuration = configuration;
-            _timeZoneBrasil = TimeZoneInfo.FindSystemTimeZoneById(
-                "E. South America Standard Time");
+            //_timeZoneBrasil = TimeZoneInfo.FindSystemTimeZoneById(
+            //    "E. South America Standard Time");
         }
 
         public void Save(ResultadoContador resultado)
@@ -24,7 +24,7 @@ namespace WorkerContagem.Data
                 _configuration.GetConnectionString("BaseContagem"));
             conexao.Insert<HistoricoContagem>(new ()
             {
-                DataProcessamento = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _timeZoneBrasil),
+                DataProcessamento = DateTime.Now, //TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _timeZoneBrasil),
                 ValorAtual = resultado.ValorAtual,
                 Producer = resultado.Producer,
                 Consumer = Environment.MachineName,
