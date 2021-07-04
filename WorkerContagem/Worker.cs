@@ -54,12 +54,12 @@ namespace WorkerContagem
                         $"[{_topico} | {_groupId} | Nova mensagem] " +
                         dadosContagem);
 
-                    ProcessarResultado(dadosContagem);
+                    ProcessarResultado(dadosContagem, result.Partition.Value);
                 });
            }
         }
 
-        private void ProcessarResultado(string dados)
+        private void ProcessarResultado(string dados, int partition)
         {
             ResultadoContador resultado;            
             try
@@ -80,7 +80,7 @@ namespace WorkerContagem
             {
                 try
                 {
-                    _repository.Save(resultado);
+                    _repository.Save(resultado, partition);
                     _logger.LogInformation("Resultado registrado com sucesso!");
                 }
                 catch (Exception ex)

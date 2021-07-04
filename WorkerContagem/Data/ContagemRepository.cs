@@ -15,7 +15,7 @@ namespace WorkerContagem.Data
             _configuration = configuration;
         }
 
-        public void Save(ResultadoContador resultado)
+        public void Save(ResultadoContador resultado, int partition)
         {
             using var conexao = new SqlConnection(
                 _configuration.GetConnectionString("BaseContagem"));
