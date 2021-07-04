@@ -47,7 +47,7 @@ namespace WorkerContagem
             {
                 await Task.Run(() =>
                 {
-                    Task.Delay(random.Next(200, 1000), stoppingToken);
+                    Task.Delay(random.Next(1000, 2200), stoppingToken);
 
                     var result = _consumer.Consume(stoppingToken);
                     var dadosContagem = result.Message.Value;
