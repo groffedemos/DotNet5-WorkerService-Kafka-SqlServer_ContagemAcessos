@@ -27,6 +27,7 @@ namespace WorkerContagem.Data
                 Consumer = Environment.MachineName,
                 ConsumerGroup = _configuration["ApacheKafka:GroupId"],
                 Topico = _configuration["ApacheKafka:Topic"],
+                Particao = partition,
                 Mensagem = resultado.Mensagem,
                 Kernel = resultado.Kernel,
                 TargetFramework = resultado.TargetFramework
