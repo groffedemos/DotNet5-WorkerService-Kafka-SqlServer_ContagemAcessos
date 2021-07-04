@@ -37,6 +37,7 @@ namespace WorkerContagem
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            var random = new Random();
             _logger.LogInformation($"Topic = {_topico}");
             _logger.LogInformation($"Group Id = {_groupId}");
             _logger.LogInformation("Aguardando mensagens...");
@@ -46,6 +47,8 @@ namespace WorkerContagem
             {
                 await Task.Run(() =>
                 {
+                    Task.Delay(random.Next(200, 1000), stoppingToken);
+
                     var result = _consumer.Consume(stoppingToken);
                     var dadosContagem = result.Message.Value;
                     
