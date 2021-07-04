@@ -56,9 +56,6 @@ namespace WorkerContagem
 
                     ProcessarResultado(dadosContagem);
                 });
-                
-                // Teste com tempo de espera a fim de escalar a aplicação
-                await Task.Delay(random.Next(1000, 2200), stoppingToken);
            }
         }
 
