@@ -20,7 +20,7 @@ namespace WorkerContagem.Extensions
                         SaslUsername = configuration["ApacheKafka:Username"],
                         SaslPassword = password,
                         GroupId = configuration["ApacheKafka:GroupId"],
-                        AutoOffsetReset = AutoOffsetReset.Latest
+                        AutoOffsetReset = AutoOffsetReset.Earliest
                     }).Build();
             else
                 return new ConsumerBuilder<Ignore, string>(
@@ -28,7 +28,7 @@ namespace WorkerContagem.Extensions
                     {
                         BootstrapServers = configuration["ApacheKafka:Host"],
                         GroupId = configuration["ApacheKafka:GroupId"],
-                        AutoOffsetReset = AutoOffsetReset.Latest
+                        AutoOffsetReset = AutoOffsetReset.Earliest
                     }).Build();
         }
     }
